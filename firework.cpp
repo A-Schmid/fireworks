@@ -37,7 +37,7 @@ void update(float timedelta)
         bool alive = rocket->update(timedelta);
         if(!alive)
         {
-            vector<Particle> newParticles = rocket->createParticles();
+            vector<Particle> newParticles = rocket->explode();
             particles.insert(particles.end(), newParticles.begin(), newParticles.end());
             //particles.push_back(rocket->createParticles());
             it = rockets.erase(it);

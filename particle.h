@@ -21,6 +21,7 @@ class Particle
         float vx, vy;
         float a;
         float lifetime, age;
+		float init_delay;
         uint32_t color;
     public:
         Particle(float x, float y, Uint32 color);
@@ -29,6 +30,7 @@ class Particle
         void setAngle(float a);
         void setLifetime(float lifetime);
         void setVelocity(float v);
+		void setInitDelay(float d);
 };
 
 #endif

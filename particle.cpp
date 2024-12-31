@@ -17,6 +17,7 @@ Particle::Particle(float x, float y, Uint32 color)
     vy = cos(a) * v;
     lifetime = PARTICLE_LIFETIME_MIN + (float)(rand()) / (RAND_MAX / (PARTICLE_LIFETIME_MAX - PARTICLE_LIFETIME_MIN));
     age = 0;
+	init_delay = 0;
 }
 
 bool Particle::update(float timedelta)
@@ -41,7 +42,10 @@ bool Particle::update(float timedelta)
 
 void Particle::render(SDL_Renderer *renderer) const
 {
-    filledCircleColor(renderer, x, y, size, color);
+	if(age > lifetime * init_delay)
+	{
+		filledCircleColor(renderer, x, y, size, color);
+	}
 }
 
 void Particle::setAngle(float a)
@@ -58,4 +62,9 @@ void Particle::setVelocity(float v)
 {
     vx = sin(a) * v;
     vy = cos(a) * v;
+}
+
+void Particle::setInitDelay(float d)
+{
+	this->init_delay = d;
 }

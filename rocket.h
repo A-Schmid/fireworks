@@ -22,6 +22,11 @@ const float ROCKET_LIFETIME_MAX = 3.0;
 const int ROCKET_PARTICLES_MIN = 100;
 const int ROCKET_PARTICLES_MAX = 200;
 
+const int SPARKLE_RADIUS_MIN = 50;
+const int SPARKLE_RADIUS_MAX = 150;
+const float SPARKLE_INIT_DELAY = 0.7;
+const float SPARKLE_VELOCITY = 20;
+
 class Rocket
 {
     private:
@@ -41,7 +46,9 @@ class Rocket
         Rocket();
         bool update(float timedelta);
         void render(SDL_Renderer *renderer);
+        vector<Particle> explode();
         vector<Particle> createParticles();
+        vector<Particle> createSparkles();
         void die();
 };
 

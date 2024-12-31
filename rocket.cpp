@@ -93,6 +93,18 @@ void Rocket::render(SDL_Renderer *renderer)
     //filledCircleColor(renderer, x, y, size, 0xFFFFFFFF);
 }
 
+vector<Particle> Rocket::explode()
+{
+	if (rand() % 2 == 0)
+	{
+		return createParticles();
+	}
+	else
+	{
+		return createSparkles();
+	}
+}
+
 vector<Particle> Rocket::createParticles()
 {
     vector<Particle> particles;
@@ -110,3 +122,33 @@ vector<Particle> Rocket::createParticles()
     }
     return particles;
 }
+
+vector<Particle> Rocket::createSparkles()
+{
+    vector<Particle> particles;
+    Uint32 particleColor;
+    int counter = 0;
+
+	int sparkle_radius = SPARKLE_RADIUS_MIN + rand() % SPARKLE_RADIUS_MAX;
+
+    while(counter == 0)
+    {
+        particleColor = COLORS[rand() % (sizeof(COLORS) / sizeof(COLORS[0]))];
+        int particleCount = ROCKET_PARTICLES_MIN + rand() % (ROCKET_PARTICLES_MAX - ROCKET_PARTICLES_MIN);
+
+        for(int i = 0; i < particleCount; i++)
+        {
+			float particle_angle = rand() * (2 * M_PI);
+			int particle_distance = rand() % sparkle_radius;
+			int particle_x = x + (particle_distance * cos(particle_angle));
+			int particle_y = y + (particle_distance * sin(particle_angle));
+			Particle p = Particle(particle_x, particle_y, particleColor);
+			p.setInitDelay(SPARKLE_INIT_DELAY);
+			p.setVelocity(SPARKLE_VELOCITY);
+            particles.push_back(p);
+        }
+        counter += rand() % 3;
+    }
+    return particles;
+}
+
