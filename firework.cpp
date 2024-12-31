@@ -22,7 +22,9 @@ void init()
 {
     srand(time(NULL));
     
-    SDL_Init(SDL_INIT_EVERYTHING);
+    SDL_Init(SDL_INIT_VIDEO);
+	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
+
     SDL_Window* window = SDL_CreateWindow(__FILE__, 0, 0, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 }
