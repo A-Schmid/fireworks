@@ -7,6 +7,12 @@ const int HEIGHT = 1080;
 const float GRAVITY = 400.0f;
 const float SPAWN_TIME_MIN = 0.3;
 const float SPAWN_TIME_MAX = 0.8;
+const float FLASH_TIME_MIN = 0.2;
+const float FLASH_TIME_MAX = 3.0;
+const float FLASH_DURATION_MIN = 0.02;
+const float FLASH_DURATION_MAX = 0.2;
+const float FLASH_INTENSITY_MIN = 0.1;
+const float FLASH_INTENSITY_MAX = 0.5;
 const Uint32 COLORS[] = {   0xFF0000FF, 0xFFFF0000, 0xFF00FF00,
                             0xFFFF00FF, 0xFF00FFFF, 0xFFFFFF00,
                             0xFFFF0088, 0xFF00FF88, 0xFFFF8800,
